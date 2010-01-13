@@ -27,7 +27,7 @@ import Data.Attempt
 import Control.Applicative
 import Control.Monad
 import Control.Monad.Trans
-import Control.Exception (Exception, handle)
+import Control.Exception (Exception)
 
 newtype AttemptT m v = AttemptT {
     runAttemptT :: m (Attempt v)
@@ -84,7 +84,4 @@ attemptTIO :: (Exception eIn, Exception eOut)
            => (eIn -> eOut)
            -> IO v
            -> AttemptT IO v
-attemptTIO f =
-      AttemptT
-    . handle (return . Failure . f)
-    . fmap Success
+attemptTIO f = AttemptT . attemptIO f

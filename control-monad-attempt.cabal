@@ -10,12 +10,12 @@ category:        Data, Failure
 stability:       stable
 cabal-version:   >= 1.2
 build-type:      Simple
-homepage:        http://github.com/snoyberg/attempt/tree/transformer
+homepage:        http://github.com/snoyberg/control-monad-attempt
 
 library
     build-depends:   base >= 4 && < 5,
                      syb,
                      transformers >= 0.1.4.0,
-                     attempt >= 0.2.0 && < 0.3
+                     attempt >= 0.2.2 && < 0.3
     exposed-modules: Control.Monad.Attempt
     ghc-options:     -Wall
