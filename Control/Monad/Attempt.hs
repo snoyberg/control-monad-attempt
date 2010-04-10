@@ -26,7 +26,8 @@ module Control.Monad.Attempt
 import Data.Attempt
 import Control.Applicative
 import Control.Monad
-import Control.Monad.Trans
+import Control.Monad.Trans.Class
+import Control.Monad.IO.Class
 import Control.Exception (Exception)
 
 newtype AttemptT m v = AttemptT {
