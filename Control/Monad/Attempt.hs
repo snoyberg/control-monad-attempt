@@ -1,6 +1,7 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE Rank2Types #-}
+{-# LANGUAGE CPP #-}
 ---------------------------------------------------------
 --
 -- Module        : Control.Monad.Attempt
@@ -26,8 +27,12 @@ module Control.Monad.Attempt
 import Data.Attempt
 import Control.Applicative
 import Control.Monad
+#if TRANSFORMERS_02
 import Control.Monad.Trans.Class
 import Control.Monad.IO.Class
+#else
+import Control.Monad.Trans
+#endif
 import Control.Exception (Exception)
 
 newtype AttemptT m v = AttemptT {
