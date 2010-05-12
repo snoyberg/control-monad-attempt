@@ -2,6 +2,7 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE Rank2Types #-}
 {-# LANGUAGE CPP #-}
+{-# LANGUAGE PackageImports #-}
 ---------------------------------------------------------
 --
 -- Module        : Control.Monad.Attempt
@@ -27,12 +28,14 @@ module Control.Monad.Attempt
 import Data.Attempt
 import Control.Applicative
 import Control.Monad
-#if TRANSFORMERS_02
-import Control.Monad.Trans.Class
-import Control.Monad.IO.Class
+
+#if MIN_VERSION_transformers(0,2,0)
+import "transformers" Control.Monad.Trans.Class
+import "transformers" Control.Monad.IO.Class
 #else
-import Control.Monad.Trans
+import "transformers" Control.Monad.Trans
 #endif
+
 import Control.Exception (Exception)
 
 newtype AttemptT m v = AttemptT {
